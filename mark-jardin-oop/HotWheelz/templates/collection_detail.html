@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Collection Detail - HotWheelz{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>{{ collection.owner_name }}</h2>
+
+        <!-- Display other details as needed -->
+        <div class="row mt-3">
+            {% for car_model in collection.cars.all %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ car_model.image_url }}" class="card-img-top" alt="{{ car_model.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% url 'car_model_detail' brand_id=car_model.brand.pk model_id=car_model.pk %}">
+                                    {{ car_model.name }}
+                                </a>
+                            </h5>
+                            <a href="{% url 'car_model_detail' brand_id=car_model.brand.pk model_id=car_model.pk %}" class="btn btn-info btn-sm">Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'collection_update' collection_id=collection.id %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'collection_delete' collection_id=collection.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+{% endblock %}

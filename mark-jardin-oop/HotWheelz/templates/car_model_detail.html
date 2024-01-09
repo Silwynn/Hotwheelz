@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Car Model Detail - HotWheelz{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>{{ car_model.name }} - {{ car_brand.name }}</h2>
+
+        <!-- Display other details as needed -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <img src="{{ car_model.image_url }}" class="img-fluid" alt="{{ car_model.name }}">
+            </div>
+            <div class="col-md-6">
+                <p><strong>Description:</strong> {{ car_model.description }}</p>
+                <!-- Add other relevant fields here -->
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'car_model_update' brand_id=car_brand.id model_id=car_model.id %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'car_model_delete' brand_id=car_brand.id model_id=car_model.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+{% endblock %}

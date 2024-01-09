@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - HotWheelz{% endblock %}
+
+{% block content %}
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+        <h1 class="display-3">Welcome to HotWheelz!</h1>
+        <p class="lead">Explore our collection of stunning sports cars.</p>
+        <a href="{% url 'car_brand_list' %}" class="btn btn-primary btn-lg">View Cars</a>
+    </header>
+
+    <!-- Featured Cars Section -->
+    <div class="row">
+        {% for car_model in car_models %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ car_model.image_url }}" alt="{{ car_model.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ car_model.name }}</h4>
+                        <p class="card-text">{{ car_model.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <p class="text-center">No featured cars</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

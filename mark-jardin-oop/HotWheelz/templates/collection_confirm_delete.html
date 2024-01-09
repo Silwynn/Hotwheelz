@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Deletion - HotWheelz{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="display-4">Confirm Deletion</h2>
+        <p>Are you sure you want to delete the collection "{{ collection.owner_name }}"?</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+
+        <a href="{% url 'collection_list' %}" class="btn btn-secondary mt-3">Cancel</a>
+    </div>
+{% endblock %}

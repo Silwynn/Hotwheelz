@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Car Models - HotWheelz{% endblock %}
+
+{% block content %}
+    <h2>Car Models</h2>
+    <div class="row">
+        {% for car_model in car_models %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ car_model.image.url }}" class="card-img-top" alt="{{ car_model.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ car_model.name }}</h5>
+                        <p class="card-text">{{ car_model.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
